@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Adding Student</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Adding Student Form</h1>
+	<form action="#" method="post" th:action="@{/addstudent/result}"
+		th:object="${student}">
+		<table>
+			<tr>
+				<td>ID</td>
+				<td><input type="text" th:field="*{id}" /></td>
+			</tr>
+			<tr>
+				<td>Name</td>
+				<td><input type="text" th:field="*{name}" /></td>
+			</tr>
+			<tr>
+				<td>Age</td>
+				<td><input type="text" th:field="*{age}" /></td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td>
+					<input type="radio" th:field="*{gender}" th:value="Male" />
+					<label th:text="Male"></label>
+					<input type="radio" th:field="*{gender}" th:value="Female" />
+					<label th:text="Female"></label>
+				</td>
+			</tr>
+			<tr>
+				<td>Address</td>
+				<td><textarea th:field="*{address}"></textarea></td>
+			</tr>
+			<tr>
+				<td>Phone</td>
+				<td><input type="text" th:field="*{phone}" /></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><input type="text" th:field="*{email}" /></td>
+			</tr>
+			<tr>
+				<td>Favorite</td>
+				<td>
+					<ul style="list-style-type: none">
+						<li th:each="item : ${favoritesList}">
+							<input type="checkbox" th:field="*{favorites}" th:value="${item}" />
+							<label th:text="${item}"></label>
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>Major</td>
+				<td>
+					<select th:field="*{major}">
+						<option value="hello"></option>
+						<option th:each="item : ${majorsList}" th:value="${item}" th:text="${item}"></option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="Submit" /></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
