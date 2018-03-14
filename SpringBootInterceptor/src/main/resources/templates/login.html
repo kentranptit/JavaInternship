@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Spring Interceptor</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Spring Boot MVC Interceptor</h1>
+	<div style="border: 1px solid #ccc; padding: 5px; margin-bottom:10px;">
+		<a th:href="@{/}">Home</a>
+		&nbsp;&nbsp; | &nbsp;&nbsp;
+		<a th:href="@{/admin/oldLogin}">/admin/oldLogin (OLD URL)</a>
+	</div>
+	<h3>This is Login Page</h3>
+	<span style="color:blue">Testing OldLoginInterceptor &amp; AdminInterceptor</span>
+	<br/><br/>
+	See more info in the Console.
+</body>
+</html>
