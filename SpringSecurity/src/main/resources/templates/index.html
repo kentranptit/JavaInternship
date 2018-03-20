@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<title>Index Page</title>
+<meta charset="UTF-8" />
+<link href="../static/css/style.css" th:href="@{/css/style.css}"
+	rel="stylesheet" />
+</head>
+<body>
+	<div>
+		Logged user: <span sec:authentication="name"></span><br/>
+		Roles: <span sec:authentication="principal.authorities"></span><br/>
+		<form action="#" th:action="@{/logout}" method="post">
+			<button type="submit">Logout</button>
+		</form>
+	</div>
+</body>
+</html>
