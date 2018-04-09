@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<title>Register</title>
+<link href="../static/css/style.css" th:href="@{/css/style.css}"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<nav th:replace="_layout :: header"></nav>
+	<div class="main-content">
+		<form class="form-horizontal" action="#" th:action="@{/register}" th:object="${user}"
+			method="post">
+			<input type="hidden" th:field="*{id}" />
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="email">Email:</label>
+				<div class="col-sm-5">
+					<input type="email" class="form-control" id="email" th:field="*{email}"
+						placeholder="Nhập email" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="pwd">Mật khẩu:</label>
+				<div class="col-sm-5">
+					<input type="password" class="form-control" id="pwd" th:field="*{password}"
+						placeholder="Nhập mật khẩu" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-5">
+					<button type="submit" class="btn btn-success">Hoàn tất</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<footer th:replace="_layout :: footer"></footer>
+</body>
+</html>

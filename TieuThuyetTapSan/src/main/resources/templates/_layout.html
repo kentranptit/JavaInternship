@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<nav th:fragment="header" class="navbar navbar-inverse container-fluid">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">小説</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">Danh mục</a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Truyện mới</a></li>
+						<li><a href="#">Truyện sáng tác</a></li>
+						<li><a href="#">Truyện hoàn thành</a></li>
+						<li><a href="#">Truyện đề cử</a></li>
+					</ul></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">Thể loại</a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Tiên hiệp</a></li>
+						<li><a href="#">Kiếm hiệp</a></li>
+						<li><a href="#">Võng Du</a></li>
+						<li><a href="#">Xuyên Không</a></li>
+					</ul></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right"
+				th:switch="${#authentication} ? ${#authorization.expression('isAuthenticated()')} : ${false}">
+				<li th:case="${false}">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#" data-toggle="modal"
+							data-target="#modalRegister"><span
+								class="glyphicon glyphicon-edit" style="margin-right: 4px;"></span>Đăng
+								ký</a></li>
+						<li><a href="#" data-toggle="modal" data-target="#modalLogin"><span
+								class="glyphicon glyphicon-log-in" style="margin-right: 6px;"></span>Đăng
+								nhập</a></li>
+					</ul>
+				</li>
+				<li th:case="${true}">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#"> <span class="glyphicon glyphicon-user"
+								style="margin-right: 1px;"></span> <span
+								sec:authentication="name"></span> <span class="caret"></span></a></li>
+						<li>
+							<a href="#" th:href="@{/logout}"><span class="glyphicon glyphicon-log-out"
+								style="margin-right: 1px;"></span> Đăng xuất </a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<!-- Modal Register -->
+		<div id="modalRegister" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Đăng ký</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal" action="#" th:action="@{/register}"
+							method="get">
+							<div class="form-group" style="padding: 20px;">
+								<div>
+									<button type="submit"
+										class="btn btn-success form-control text-center col-sm-5">Đăng
+										ký với tài khoản email</button>
+								</div>
+							</div>
+						</form>
+						<form class="form-horizontal" action="#" method="get">
+							<div class="form-group" style="padding: 20px;">
+								<div>
+									<button type="submit"
+										class="btn btn-primary form-control text-center col-sm-5">Đăng
+										ký với tài khoản facebook</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal Login -->
+		<div id="modalLogin" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title text-center">Đăng nhập</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal" action="#" th:action="@{/login}"
+							method="post">
+							<div class="form-group" style="padding: 20px;">
+								<div>
+									<button type="submit"
+										class="btn btn-success form-control text-center col-sm-5">Đăng
+										nhập với tài khoản email</button>
+								</div>
+							</div>
+						</form>
+						<form class="form-horizontal" action="#" method="get">
+							<div class="form-group" style="padding: 20px;">
+								<div>
+									<button type="submit"
+										class="btn btn-primary form-control text-center col-sm-5">Đăng
+										nhập với tài khoản facebook</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<footer th:fragment="footer" class="container-fluid"
+		style="padding: 0px;">
+		<div class="container-fluid"
+			style="background: #222222; color: white; height: 150px; padding-top: 60px; padding-left: 35px;">Copyright
+			&copy; 2018 KhaiTran - Ominext</div>
+	</footer>
+</body>
+</html>
